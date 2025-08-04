@@ -23,3 +23,8 @@ python main.py
 '0 8,20 * * *' : 毎日8時と20時
 '*/30 * * * *' : 30分ごと
 ```
+
+### 現在の監視対象
+- [日向海フェニカさん（UCygtb6wTyiSxXYHPAHs3UKA）](https://www.youtube.com/@hinamiphoenica)
+
+https://www.youtube.com/@hinamiphoenica

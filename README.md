@@ -26,3 +26,9 @@ python main.py
 
 ### 現在の監視対象
 - [日向海フェニカさん（UCygtb6wTyiSxXYHPAHs3UKA）](https://www.youtube.com/@hinamiphoenica)
+- [天晴ほかるさん（UC6bD0BolIyRtVCXL0SKn8Yw）](https://www.youtube.com/@amanoharehokaru)
+- [歩音ティナさん（UCkd3H8yZEXxZSGSOmxeHxrg）](https://www.youtube.com/@arunetina)
+- [栃宮るりはさん（UC8xsCroRQKmQt0rXKuYQQyw）](https://www.youtube.com/@tochimiyaruriha)
+- [山奈しずくさん（UCJSglVBagnVoCD82MsBlmDA）](https://www.youtube.com/@yamanashizuku)
+- [木乃華サクヤさん（UCSWkUurjlKM39CnS1hnfE_Q）](https://www.youtube.com/@-konohanasakuya-3940)
+- [ユニバースプロダクション公式チャンネル（UCgtiP3tTIO7-Yn0y_W1s4Cw）](https://www.youtube.com/@unibirth_production)

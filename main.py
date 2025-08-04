@@ -169,6 +169,12 @@ def main():
     channel_ids = [
         # ここに監視したいチャンネルのIDを追加
         'UCygtb6wTyiSxXYHPAHs3UKA', # 日向海フェニカ
+        'UC6bD0BolIyRtVCXL0SKn8Yw', # 天晴ほかる
+        'UCkd3H8yZEXxZSGSOmxeHxrg', # 歩音ティナ
+        'UC8xsCroRQKmQt0rXKuYQQyw', # 栃宮るりは
+        'UCJSglVBagnVoCD82MsBlmDA', # 山奈しずく
+        'UCSWkUurjlKM39CnS1hnfE_Q', # 木乃華サクヤ
+        'UCgtiP3tTIO7-Yn0y_W1s4Cw', # ユニバースプロダクション
     ]
     
     # 環境変数チェック

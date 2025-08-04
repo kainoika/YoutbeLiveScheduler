@@ -26,5 +26,3 @@ python main.py
 
 ### 現在の監視対象
 - [日向海フェニカさん（UCygtb6wTyiSxXYHPAHs3UKA）](https://www.youtube.com/@hinamiphoenica)
-
-https://www.youtube.com/@hinamiphoenica

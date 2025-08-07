@@ -108,27 +108,51 @@ class YouTubeCalendarSync:
     def check_existing_event(self, stream_info):
         """既存のイベントをチェック（重複防止）"""
         try:
-            # 配信予定時刻の前後1日で検索
+            # 配信予定時刻の前後1時間で検索（より正確な重複検出のため範囲を狭める）
             start_time = datetime.fromisoformat(stream_info['scheduled_start_time'].replace('Z', '+00:00'))
-            time_min = (start_time - timedelta(days=1)).isoformat()
-            time_max = (start_time + timedelta(days=1)).isoformat()
+            time_min = (start_time - timedelta(hours=1)).isoformat()
+            time_max = (start_time + timedelta(hours=1)).isoformat()
             
+            # タイトル検索を使わず、時間範囲内の全イベントを取得
             events_result = self.calendar.events().list(
                 calendarId=self.calendar_id,
                 timeMin=time_min,
                 timeMax=time_max,
-                q=stream_info['title'][:50],  # タイトルの一部で検索
                 singleEvents=True,
                 orderBy='startTime'
             ).execute()
             
             events = events_result.get('items', [])
             
-            # URLが含まれているイベントがあるかチェック
+            # 複数の条件で重複をチェック
             for event in events:
                 description = event.get('description', '')
-                if stream_info['url'] in description:
+                summary = event.get('summary', '')
+                
+                # Video IDベースでの確実なチェック
+                video_id = stream_info['video_id']
+                
+                # 以下のいずれかの条件に合致したら重複と判定
+                # 1. Video IDが含まれている（最も確実）
+                if video_id in description:
+                    print(f"  → 重複検出: Video ID {video_id} が既存イベントに含まれています")
                     return event
+                
+                # 2. 完全なYouTube URLが含まれている
+                if stream_info['url'] in description:
+                    print(f"  → 重複検出: URL {stream_info['url']} が既存イベントに含まれています")
+                    return event
+                
+                # 3. 同じ配信開始時刻かつ同じチャンネル名
+                event_start = event.get('start', {}).get('dateTime', '')
+                if event_start:
+                    event_start_time = datetime.fromisoformat(event_start.replace('Z', '+00:00'))
+                    time_diff = abs((event_start_time - start_time).total_seconds())
+                    
+                    # 開始時刻が5分以内の差で、かつチャンネル名が含まれている場合
+                    if time_diff < 300 and stream_info['channel_title'] in description:
+                        print(f"  → 重複検出: 同じ時刻・同じチャンネルのイベントが存在します")
+                        return event
             
             return None
         
